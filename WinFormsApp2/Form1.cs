@@ -5,6 +5,9 @@ namespace WinFormsApp2
         public Form1()
         {
             InitializeComponent();
+            // считывем значения из настроек
+            number.Text = Properties.Settings.Default.number.ToString();
+
         }
 
 
@@ -19,6 +22,9 @@ namespace WinFormsApp2
                                 MessageBoxButtons.OK);
                     return;
                 }
+                //  передаем введенные значения в параметры
+                Properties.Settings.Default.number = inputNumber;
+                Properties.Settings.Default.Save();
                 MessageBox.Show($"Наибольшая цифра: {Logic.FindMaxDigit(inputNumber)}");
             }
             catch (FormatException)
